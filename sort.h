@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <unistd.h>
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -30,6 +31,8 @@ void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
+int _putchar(char c);
+void custom_putint(int num);
 typedef enum kind_e
 {
     SPADE = 0,
