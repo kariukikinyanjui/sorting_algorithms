@@ -14,10 +14,10 @@ void print_list(const listint_t *list)
 	while (list)
 	{
 		if (i > 0)
-			print(", ");
-		print("%d", list->n);
+			printf(", ");
+		printf("%d", list->n);
 		++i;
 		list = list->next;
 	}
-	print("\n");
+	printf("\n");
 }
