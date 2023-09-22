@@ -27,10 +27,12 @@ void custom_putint(int num)
 		num = -num;
 	}
 	do
+
 	{
 		buffer[index++] = (char)(num % 10 + '0');
 		num /= 10;
 	}
+
 	while (num > 0);
 
 	while (index > 0)
