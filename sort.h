@@ -33,6 +33,9 @@ void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 int _putchar(char c);
 void custom_putint(int num);
+int lomuto_partition(int *array, size_t size, int low, int high);
+void quicksort(int *array, size_t size, int start, int end);
+void swap(int *a, int *b);
 typedef enum kind_e
 {
     SPADE = 0,
