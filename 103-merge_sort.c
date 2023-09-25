@@ -46,7 +46,6 @@ void merge(int *array, int *left, int *right, size_t size)
 	}
 	for (i = 0; i < size; i++)
 		array[i] = temp[i];
-
 	printf("[Done]: ");
 	print_array(array, size);
 	free(temp);
