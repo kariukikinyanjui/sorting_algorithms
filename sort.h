@@ -13,9 +13,9 @@
  */
 typedef struct listint_s
 {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
@@ -36,11 +36,5 @@ void custom_putint(int num);
 int lomuto_partition(int *array, size_t size, int low, int high);
 void quicksort(int *array, size_t size, int start, int end);
 void swap(int *a, int *b);
-typedef enum kind_e
-{
-    SPADE = 0,
-    HEART,
-    CLUB,
-    DIAMOND
-} kind_t;
+void swap_nodes(listint_t *node1, listint_t *node2);
 #endif
