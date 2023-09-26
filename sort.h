@@ -37,4 +37,9 @@ int lomuto_partition(int *array, size_t size, int low, int high);
 void quicksort(int *array, size_t size, int start, int end);
 void swap(int *a, int *b);
 void swap_nodes(listint_t *node1, listint_t *node2);
+void merge(int *array, int *left, int *right, size_t size);
+void swap_two(int *array, size_t size, int a, int b);
+void sift_down(int *array, size_t size, size_t start, size_t end);
+int get_max(int *array, size_t size);
+void counting_sort_radix(int *array, size_t size, int exp);
 #endif
