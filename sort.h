@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <stdbool.h>
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -34,7 +35,8 @@ void print_list(const listint_t *list);
 int lomuto_partition(int *array, size_t size, int low, int high);
 void quicksort(int *array, size_t size, int high, int low);
 void swap(int *a, int *b);
-void swap_nodes(listint_t **list, listint_t **a, listint_t **b);
+void swap_node_forward(listint_t **list, listint_t **a, listint_t **b);
+void swap_node_behind(listint_t **list, listint_t **a, listint_t **b);
 void merge(int *array, int *left, int *right, size_t size);
 void swap_two(int *array, size_t size, int a, int b);
 void sift_down(int *array, size_t size, size_t start, size_t end);
