@@ -6,59 +6,84 @@
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *left = *list, *right = NULL, *current;
-	int swapped;
+	listint_t *a, *b;
+	bool c = false;
 
-	if (!list || !(*list) || !((*list)->next))
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	do
+	for (a = *list; a->next != NULL; a = a->next)
+	while (c == false)
 	{
-		swapped = 0;
-		for (current = left; current->next != right; current = current->next)
+		c = true;
+		for (b = *list; b != a; b = b->next)
 		{
-			if (current->n > current->next->n)
+			if (b->n > b->next->n)
 			{
-				swap_nodes(list, &current, &current->next);
-				print_list(*list);
-				swapped = 1;
+				swap_node_forward(list, &a, &b);
+				print_list((const listint_t *) * list);
+				c = false;
 			}
 		}
-		if (!swapped)
-			break;
-		swapped = 0;
-		right = current;
-		for (current = right; current->prev != left; current = current->prev)
+		for (b = b->prev; b != *list; b = b->prev)
 		{
-			if (current->n < current->prev->n)
+			if (b->n < b->prev->n)
 			{
-				swap_nodes(list, &current, &current->prev);
-				print_list(*list);
-				swapped = 1;
+				swap_node_behind(list, &a, &b);
+				print_list((const listint_t *) * list);
+				c = false;
 			}
 		}
-		left = current;
 	}
-	while (swapped);
 }
 
 /**
- * swap_nodes - Swaps two nodes in a doubly linked list
+ * swap_node_forward - Swaps two nodes in a doubly linked list of integers
+ * with the node ahead of it
  * @list: Pointer to the head of the list
  * @a: Pointer to the first node
  * @b: Pointer to the second node
  */
-void swap_nodes(listint_t **list, listint_t **a, listint_t **b)
+void swap_node_forward(listint_t **list, listint_t **a, listint_t **b)
 {
-	listint_t *temp_a = *a, *temp_b = *b;
+	listint_t *temp = (*b)->next;
 
-	if (temp_a->prev)
-		temp_a->prev->next = temp_b;
+	if ((*b)->prev != NULL)
+		(*b)->prev->next = temp;
 	else
-		*list = temp_b;
-	if (temp_b->next)
-		temp_b->next->prev = temp_a;
-	temp_a->next = temp_b->next;
-	temp_b->prev = temp_a->prev;
-	temp_a->prev = temp_b;
-	temp_b->next = temp_a;
+		*list = temp;
+	temp->prev = (*b)->prev;
+	(*b)->next = temp->next;
+	if (temp->next != NULL)
+		temp->next->prev = *b;
+	else
+		*a = *b;
+	(*b)->prev = temp;
+	temp->next = *b;
+	*b = temp;
+}
+
+/**
+ * swap_node_behind - Swap a node in a listint_t doubly_linked list of
+ * integers with the node behind it.
+ * @list: A pointer to the head of a doubly_linked list of integers.
+ * @a: A pointer to the tail of the doubly-linked list.
+ * @b: A pointer to the current swapping node of the cocktail shaker algo.
+ */
+void swap_node_behind(listint_t **list, listint_t **a, listint_t **b)
+{
+	listint_t *temp = (*b)->prev;
+
+	if ((*b)->next != NULL)
+		(*b)->next->prev = temp;
+	else
+		*a = temp;
+	temp->next = (*b)->next;
+	(*b)->prev = temp->prev;
+	if (temp->prev != NULL)
+		temp->prev->next = *b;
+	else
+		*list = *b;
+	(*b)->next = temp;
+	temp->prev = *b;
+	*b = temp;
 }
