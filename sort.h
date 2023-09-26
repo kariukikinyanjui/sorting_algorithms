@@ -44,4 +44,7 @@ int get_max(int *array, size_t size);
 void counting_sort_radix(int *array, size_t size, int exp);
 void bitonic_merge(int *array, size_t size, int dir);
 void bitonic_compare(int *array, size_t size, int dir);
+void _quick_sort_hoare(int *array, int low, int high, size_t size);
+int hoare_partition(int *array, int low, int high, size_t size);
+void swap_three(int *array, int a, int b);
 #endif
