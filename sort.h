@@ -42,4 +42,6 @@ void swap_two(int *array, size_t size, int a, int b);
 void sift_down(int *array, size_t size, size_t start, size_t end);
 int get_max(int *array, size_t size);
 void counting_sort_radix(int *array, size_t size, int exp);
+void bitonic_merge(int *array, size_t size, int dir);
+void bitonic_compare(int *array, size_t size, int dir);
 #endif
